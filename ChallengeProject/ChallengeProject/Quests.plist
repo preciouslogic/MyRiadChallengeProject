@@ -48,19 +48,19 @@
 	</dict>
 	<dict>
 		<key>Title</key>
-		<string>Bandits in the Woods</string>
+		<string>Filthy Mongrel</string>
 		<key>Details</key>
-		<string>The famed bounty hunter HotDog has requested the aid of a hero in ridding the woods of terrifying bandits who have thus far eluded his capture, as he is actually a dog, and cannot actually grab things more than 6 feet off the ground.</string>
+		<string>That strange dog that everyone is treating like a bounty-hunter must go. By the order of Prince Jack, that smelly, disease ridden mongrel must be removed from our streets by any means necessary. He is disrupting the lives of ordinary citizens, and it&apos;s just really weird. Make it gone.</string>
 		<key>Latitude</key>
 		<real>46.908588</real>
 		<key>Longitude</key>
 		<real>-96.80899100000001</real>
 		<key>Owner</key>
-		<string>HotDogg The Bounty Hunter</string>
+		<string>Prince Jack, The Iron Horse</string>
 		<key>OwnerLatitude</key>
-		<real>46.8541979</real>
+		<real>46.8739748</real>
 		<key>OwnerLongitude</key>
-		<real>-96.8285138</real>
+		<real>-96.806112</real>
 		<key>Alignment</key>
 		<string>EVIL</string>
 		<key>GoldRewards</key>

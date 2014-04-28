@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldPassword;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 - (IBAction)loginAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lblRememberUsername;
+@property (weak, nonatomic) IBOutlet UISwitch *switchRememberUsername;
 @end

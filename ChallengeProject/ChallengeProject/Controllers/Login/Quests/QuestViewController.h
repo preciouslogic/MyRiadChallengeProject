@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "QuestHandler.h"
-@interface QuestViewController : UITableViewController<QuestHandlerDelegate>
+#import "SettingViewController.h"
+@interface QuestViewController : UITableViewController<QuestHandlerDelegate,SettingViewControllerDelegates>
 {
     QuestHandler *objQuestHandler;
     NSMutableArray *objQuestList;
     int selectedRow;
+    NSString *currentAlignment;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLogout;
 - (IBAction)logoutAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnSetting;
+- (IBAction)settingAction:(id)sender;
 
 @end

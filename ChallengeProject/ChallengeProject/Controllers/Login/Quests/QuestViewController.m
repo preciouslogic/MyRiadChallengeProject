@@ -10,6 +10,7 @@
 #import "QuestCell.h"
 #import "SVProgressHUD.h"
 #import "DetailsViewController.h"
+
 @interface QuestViewController ()
 
 @end
@@ -28,10 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    currentAlignment = @"neutral";
     objQuestList = [[NSMutableArray alloc] init];
     objQuestHandler = [[QuestHandler alloc] init];
     objQuestHandler.delegate = self;
-    [objQuestHandler loadAllQuests];
+    [objQuestHandler loadAllQuests:currentAlignment];
    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,8 +53,18 @@
     {
         DetailsViewController *objDetailViewController = segue.destinationViewController;
         objDetailViewController.objQuest = [objQuestList objectAtIndex:selectedRow];
+    }
+    else if([segue.identifier isEqualToString:@"SettingViewController"])
+    {
+        UINavigationController *objNav = segue.destinationViewController;
+        SettingViewController *objSetting = [objNav.viewControllers objectAtIndex:0];
+        objSetting.delegate = self;
         
     }
+}
+- (IBAction)settingAction:(id)sender
+{
+    [self performSegueWithIdentifier:@"SettingViewController" sender:nil];
 }
 
 #pragma mark TableViewDelegatesAndDataSource
@@ -95,6 +107,7 @@
 {
     if(status)
     {
+        
         objQuestList = data;
         [self.tableView reloadData];
     }
@@ -103,5 +116,10 @@
         [SVProgressHUD showErrorWithStatus:@"Some thing wrong happend!"];
     }
 }
-
+#pragma  mark SettingViewDelegates
+-(void)settingViewControllerDone:(NSString *)selectedType
+{
+    currentAlignment = selectedType;
+     [objQuestHandler loadAllQuests:currentAlignment];
+}
 @end

@@ -57,6 +57,7 @@
     NSUserDefaults *prefs=[NSUserDefaults  standardUserDefaults];
     
      [prefs removeObjectForKey:key];
+     [prefs synchronize];
 }
 +(BOOL)containString:(NSString*)str inText:(NSString*)text
 {

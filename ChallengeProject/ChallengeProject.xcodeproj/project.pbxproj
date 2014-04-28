@@ -34,6 +34,9 @@
 		B3F8371E190D236400CF8852 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8371D190D236400CF8852 /* User.m */; };
 		B3F83724190D255400CF8852 /* UserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F83723190D255400CF8852 /* UserHandler.m */; };
 		B3F83727190D285700CF8852 /* QuestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F83726190D285700CF8852 /* QuestHandler.m */; };
+		B3F8372D190D49ED00CF8852 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F8372C190D49ED00CF8852 /* MapKit.framework */; };
+		B3F83730190D4ABF00CF8852 /* AnnotationMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8372F190D4ABF00CF8852 /* AnnotationMaker.m */; };
+		B3FF1A89190EC423007D0903 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF1A88190EC423007D0903 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,11 @@
 		B3F83723190D255400CF8852 /* UserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHandler.m; sourceTree = "<group>"; };
 		B3F83725190D285700CF8852 /* QuestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestHandler.h; sourceTree = "<group>"; };
 		B3F83726190D285700CF8852 /* QuestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestHandler.m; sourceTree = "<group>"; };
+		B3F8372C190D49ED00CF8852 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B3F8372E190D4ABF00CF8852 /* AnnotationMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationMaker.h; sourceTree = "<group>"; };
+		B3F8372F190D4ABF00CF8852 /* AnnotationMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationMaker.m; sourceTree = "<group>"; };
+		B3FF1A87190EC423007D0903 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		B3FF1A88190EC423007D0903 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F8372D190D49ED00CF8852 /* MapKit.framework in Frameworks */,
 				B364F1A3190C1E49004B82B3 /* CoreGraphics.framework in Frameworks */,
 				B364F1A5190C1E49004B82B3 /* UIKit.framework in Frameworks */,
 				B364F1A1190C1E49004B82B3 /* Foundation.framework in Frameworks */,
@@ -138,6 +147,7 @@
 		B364F19F190C1E49004B82B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3F8372C190D49ED00CF8852 /* MapKit.framework */,
 				B364F1A0190C1E49004B82B3 /* Foundation.framework */,
 				B364F1A2190C1E49004B82B3 /* CoreGraphics.framework */,
 				B364F1A4190C1E49004B82B3 /* UIKit.framework */,
@@ -223,6 +233,7 @@
 		B364F1DB190C29CC004B82B3 /* Quests */ = {
 			isa = PBXGroup;
 			children = (
+				B3FF1A86190EC423007D0903 /* Setting */,
 				B364F1DC190C29CC004B82B3 /* Details */,
 				B364F1F2190C2FA6004B82B3 /* QuestCell.h */,
 				B364F1F3190C2FA6004B82B3 /* QuestCell.m */,
@@ -283,6 +294,8 @@
 		B364F1E1190C2A06004B82B3 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				B3F8372E190D4ABF00CF8852 /* AnnotationMaker.h */,
+				B3F8372F190D4ABF00CF8852 /* AnnotationMaker.m */,
 				B3F83719190D1C2700CF8852 /* Quest.h */,
 				B3F8371A190D1C2700CF8852 /* Quest.m */,
 				B3F8371C190D236400CF8852 /* User.h */,
@@ -299,6 +312,15 @@
 				B364F1E9190C2EF1004B82B3 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		B3FF1A86190EC423007D0903 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				B3FF1A87190EC423007D0903 /* SettingViewController.h */,
+				B3FF1A88190EC423007D0903 /* SettingViewController.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +426,7 @@
 				B3F83727190D285700CF8852 /* QuestHandler.m in Sources */,
 				B364F1B1190C1E49004B82B3 /* AppDelegate.m in Sources */,
 				B3F83724190D255400CF8852 /* UserHandler.m in Sources */,
+				B3F83730190D4ABF00CF8852 /* AnnotationMaker.m in Sources */,
 				B3F83716190CB6C400CF8852 /* NavViewController.m in Sources */,
 				B364F1EB190C2EF1004B82B3 /* SVProgressHUD.m in Sources */,
 				B364F1F4190C2FA6004B82B3 /* QuestCell.m in Sources */,
@@ -414,6 +437,7 @@
 				B364F1E5190C2AA3004B82B3 /* CommonMethods.m in Sources */,
 				B364F1EE190C2F36004B82B3 /* LoginViewController.m in Sources */,
 				B364F1FD190C3812004B82B3 /* DetailsViewController.m in Sources */,
+				B3FF1A89190EC423007D0903 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

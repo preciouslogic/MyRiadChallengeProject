@@ -27,5 +27,5 @@ typedef enum
 @interface QuestHandler : NSObject
 @property (nonatomic,weak)id<QuestHandlerDelegate> delegate;
 
--(void)loadAllQuests;
+-(void)loadAllQuests:(NSString*)alignmentType;
 @end

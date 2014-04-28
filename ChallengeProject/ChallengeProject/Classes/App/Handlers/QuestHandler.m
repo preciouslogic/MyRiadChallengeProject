@@ -11,7 +11,7 @@
 
 @implementation QuestHandler
 
--(void)loadAllQuests
+-(void)loadAllQuests:(NSString*)alignmentType
 {
     @try
     {
@@ -19,18 +19,21 @@
         NSArray *tempQuestArray = [[NSArray alloc] initWithContentsOfFile:[CommonMethods plistPath:@"Quests"]];
         for (NSDictionary *objQuestDic in tempQuestArray)
         {
-            Quest *objQuest = [[Quest alloc] init];
-            objQuest.title = [objQuestDic objectForKey:@"Title"];
-            objQuest.Details = [objQuestDic objectForKey:@"Details"];
-            objQuest.owner = [objQuestDic objectForKey:@"Owner"];
-            objQuest.ownerLatitude = [[objQuestDic objectForKey:@"OwnerLatitude"] floatValue];
-            objQuest.ownerLongitude = [[objQuestDic objectForKey:@"OwnerLongitude"] floatValue];
-            objQuest.latitude = [[objQuestDic objectForKey:@"Latitude"] floatValue];
-            objQuest.longitude = [[objQuestDic objectForKey:@"Longitude"] floatValue];
-            objQuest.alignment = [objQuestDic objectForKey:@"Alignment"];
-            objQuest.goldRewards = [[objQuestDic objectForKey:@"GoldRewards"] intValue];
-            objQuest.xpRewards = [[objQuestDic objectForKey:@"XP"] intValue];
-            [objQuestsDataArray addObject:objQuest];
+            if([[[objQuestDic objectForKey:@"Alignment"] lowercaseString] isEqualToString:[alignmentType lowercaseString]] || [[alignmentType lowercaseString] isEqualToString:@"neutral"])
+            {
+                Quest *objQuest = [[Quest alloc] init];
+                objQuest.title = [objQuestDic objectForKey:@"Title"];
+                objQuest.Details = [objQuestDic objectForKey:@"Details"];
+                objQuest.owner = [objQuestDic objectForKey:@"Owner"];
+                objQuest.ownerLatitude = [[objQuestDic objectForKey:@"OwnerLatitude"] floatValue];
+                objQuest.ownerLongitude = [[objQuestDic objectForKey:@"OwnerLongitude"] floatValue];
+                objQuest.latitude = [[objQuestDic objectForKey:@"Latitude"] floatValue];
+                objQuest.longitude = [[objQuestDic objectForKey:@"Longitude"] floatValue];
+                objQuest.alignment = [objQuestDic objectForKey:@"Alignment"];
+                objQuest.goldRewards = [[objQuestDic objectForKey:@"GoldRewards"] intValue];
+                objQuest.xpRewards = [[objQuestDic objectForKey:@"XP"] intValue];
+                [objQuestsDataArray addObject:objQuest];
+            }
             
         }
         [self.delegate questLodingDone:objQuestsDataArray Status:YES];
