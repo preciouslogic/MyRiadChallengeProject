@@ -34,14 +34,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.txtFieldPassword.text = @"";
+    [self setViewAccordingToOrientations];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (BOOL)shouldAutorotate {
-    
+-(void)setViewAccordingToOrientations
+{
     UIInterfaceOrientation orientation = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
     
     [self.view endEditing:YES];
@@ -61,6 +62,10 @@
         self.switchRememberUsername.frame = CGRectMake(340, 192, 51, 31);
         self.btnLogin.frame = CGRectMake(209, 240, 150, 30);
     }
+}
+- (BOOL)shouldAutorotate {
+    
+    [self setViewAccordingToOrientations];
     
     return YES;
 }

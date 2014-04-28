@@ -15,6 +15,7 @@
 }
 
 @property(nonatomic,copy)NSString *title;
+@property(nonatomic,assign)int type;
 @property(nonatomic,copy)NSString *subTitle;
 @property (nonatomic, readonly)CLLocationCoordinate2D coordinate;
 - (id)initWithTitle:(NSString *)ttl withSubTitle:(NSString*)subTit andCoordinate:(CLLocationCoordinate2D)c2d;

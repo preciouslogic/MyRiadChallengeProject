@@ -37,6 +37,8 @@
 		B3F8372D190D49ED00CF8852 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F8372C190D49ED00CF8852 /* MapKit.framework */; };
 		B3F83730190D4ABF00CF8852 /* AnnotationMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8372F190D4ABF00CF8852 /* AnnotationMaker.m */; };
 		B3FF1A89190EC423007D0903 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF1A88190EC423007D0903 /* SettingViewController.m */; };
+		B3FF1A8C190EE23F007D0903 /* userpin.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FF1A8A190EE23F007D0903 /* userpin.png */; };
+		B3FF1A8D190EE23F007D0903 /* locationpin.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FF1A8B190EE23F007D0903 /* locationpin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		B3F8372F190D4ABF00CF8852 /* AnnotationMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationMaker.m; sourceTree = "<group>"; };
 		B3FF1A87190EC423007D0903 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		B3FF1A88190EC423007D0903 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		B3FF1A8A190EE23F007D0903 /* userpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userpin.png; sourceTree = "<group>"; };
+		B3FF1A8B190EE23F007D0903 /* locationpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationpin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 		B364F1A7190C1E49004B82B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3FF1A8A190EE23F007D0903 /* userpin.png */,
+				B3FF1A8B190EE23F007D0903 /* locationpin.png */,
 				B364F1A8190C1E49004B82B3 /* ChallengeProject-Info.plist */,
 				B364F1A9190C1E49004B82B3 /* InfoPlist.strings */,
 				B364F1AC190C1E49004B82B3 /* main.m */,
@@ -403,6 +409,8 @@
 				B364F1B7190C1E49004B82B3 /* Main_iPad.storyboard in Resources */,
 				B364F1BC190C1E49004B82B3 /* Images.xcassets in Resources */,
 				B364F1B4190C1E49004B82B3 /* Main_iPhone.storyboard in Resources */,
+				B3FF1A8C190EE23F007D0903 /* userpin.png in Resources */,
+				B3FF1A8D190EE23F007D0903 /* locationpin.png in Resources */,
 				B364F1AB190C1E49004B82B3 /* InfoPlist.strings in Resources */,
 				B3F83718190D184B00CF8852 /* Quests.plist in Resources */,
 			);

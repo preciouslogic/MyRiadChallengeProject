@@ -58,7 +58,8 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-- (BOOL)shouldAutorotate {
+-(void)setViewAccordingToOrientations
+{
     
     UIInterfaceOrientation orientation = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
     
@@ -77,21 +78,19 @@
         self.segmentControllerType.frame = CGRectMake(154, 113, 260, 29);
         self.btnUpdateLocation.frame = CGRectMake(159, 148, 250, 30);
         self.locationMap.frame = CGRectMake(20, 180, 528, 130);
-
-    }
-    
-    return YES;
-}
--(void)viewDidAppear:(BOOL)animated
-{
-    UIInterfaceOrientation orientation = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
-    if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
-    {
-       
-        self.locationMap.frame = CGRectMake(20, 180, 528, 130);
         
     }
-
+    
+}
+- (BOOL)shouldAutorotate
+{
+    [self setViewAccordingToOrientations];
+    return YES;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [self setViewAccordingToOrientations];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -117,6 +116,13 @@
     
     //NSLog(@"Annotation Count::%d",[self.BusinessMap.annotations count]);
     [self zoomMapViewToFitAnnotations:self.locationMap animated:YES];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    [CommonMethods showAlertView:@"Allow Location Service" Message:@"Goto 1. Settings 2. Privacy 3. Location Services 4. Set ChallengeProject to ON"];
+	NSLog(@"Error: %@", [error description]);
 }
 - (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView1 animated:(BOOL)animated
 {
@@ -166,19 +172,10 @@
         if(!annotationView){
             annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:parkingAnnotationIdentifier];
             
-           // annotationView.image=[UIImage imageNamed:@"Checkin-icon-.png"];
+            // annotationView.image=[UIImage imageNamed:@"Checkin-icon-.png"];
         }
         return annotationView;
     }
     return nil;
 }
-
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error
-{
-    [CommonMethods showAlertView:@"Allow Location Service" Message:@"Goto 1. Settings 2. Privacy 3. Location Services 4. Set ChallengeProject to ON"];
-	NSLog(@"Error: %@", [error description]);
-}
-
 @end
