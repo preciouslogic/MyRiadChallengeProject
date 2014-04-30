@@ -7,12 +7,18 @@
 //
 
 #import "AppDelegate.h"
-
+#import <Parse/Parse.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"nyV2iKoWp4ZvHfRj1nOeQElDRjZLcmXKviq0LQKB"
+                  clientKey:@"V59gduRqnzJZdT90F9rItnPY4kEoaNPScrQxWPc1"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [PFFacebookUtils initializeFacebook];
+    [PFTwitterUtils initializeWithConsumerKey:@"KLzEB7yjdv5irGAFSsvV1ZsHh"
+                               consumerSecret:@"tQazuqVWA35x4XJo2WF7engri6NLrtSOCcGtvjBBN1jCxGEg67"];
     return YES;
 }
 							
@@ -35,6 +41,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -42,5 +49,14 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
+}
+
 
 @end

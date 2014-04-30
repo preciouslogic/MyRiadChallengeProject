@@ -100,7 +100,15 @@
 }
 - (IBAction)logoutAction:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if(self.isSignUpCall)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
 }
 #pragma mark QuestHandlerDelegates
 -(void)questLodingDone:(id)data Status:(BOOL)status

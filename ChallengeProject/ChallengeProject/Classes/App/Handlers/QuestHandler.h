@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Quest.h"
-typedef enum
-{
-    kQuestLoded=0,
-    
-} UserDelegateType;
-
 
 @class QuestHandler;
 

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "QuestHandler.h"
 #import "SettingViewController.h"
+
+
+
 @interface QuestViewController : UITableViewController<QuestHandlerDelegate,SettingViewControllerDelegates>
 {
     QuestHandler *objQuestHandler;
@@ -17,8 +20,10 @@
     NSString *currentAlignment;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLogout;
-- (IBAction)logoutAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnSetting;
+@property (assign,nonatomic)BOOL isSignUpCall;
+
 - (IBAction)settingAction:(id)sender;
+- (IBAction)logoutAction:(id)sender;
 
 @end

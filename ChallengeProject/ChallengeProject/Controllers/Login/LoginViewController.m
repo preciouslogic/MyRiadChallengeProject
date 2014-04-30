@@ -35,6 +35,7 @@
 {
     self.txtFieldPassword.text = @"";
     [self setViewAccordingToOrientations];
+    [UserHandler sharedInstance].delegate = self;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -53,14 +54,21 @@
         self.lblRememberUsername.frame = CGRectMake(45, 315, 183, 21);
         self.switchRememberUsername.frame = CGRectMake(236, 309, 51, 31);
         self.btnLogin.frame = CGRectMake(85, 345, 150, 30);
+        self.btnFB.frame = CGRectMake(0, 130, 320, 34);
+        self.btnTW.frame = CGRectMake(0, 172, 320, 34);
+        self.btnSignUp.frame = CGRectMake(85, 383, 150, 30);
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
-        self.txtFieldUsername.frame = CGRectMake(159, 113, 250, 30);
-        self.txtFieldPassword.frame = CGRectMake(159, 153, 250, 30);
-        self.lblRememberUsername.frame = CGRectMake(185, 198, 183, 21);
-        self.switchRememberUsername.frame = CGRectMake(340, 192, 51, 31);
-        self.btnLogin.frame = CGRectMake(209, 240, 150, 30);
+        self.btnFB.frame = CGRectMake(3, 85, 320, 34);
+        self.btnTW.frame = CGRectMake(246, 86, 320, 34);
+       
+        self.txtFieldUsername.frame = CGRectMake(159, 139, 250, 30);
+        self.txtFieldPassword.frame = CGRectMake(159, 177, 250, 30);
+        self.lblRememberUsername.frame = CGRectMake(172, 220, 183, 21);
+        self.switchRememberUsername.frame = CGRectMake(347, 215, 51, 31);
+        self.btnSignUp.frame = CGRectMake(186, 254, 73, 30);
+        self.btnLogin.frame = CGRectMake(281, 254, 95, 30);
     }
 }
 - (BOOL)shouldAutorotate {
@@ -83,7 +91,7 @@
     [self.view endEditing:YES];
     if([CommonMethods countStringLength:self.txtFieldUsername.text]>0 && self.txtFieldPassword.text.length>0)
     {
-        [UserHandler sharedInstance].delegate = self;
+        
         [[UserHandler sharedInstance] login:self.txtFieldUsername.text password:self.txtFieldPassword.text];
     }
     else if (self.txtFieldUsername.text.length<=0)
@@ -94,6 +102,20 @@
     {
         [SVProgressHUD showErrorWithStatus:@"Password field can't be empty"];
     }
+}
+- (IBAction)FBAction:(id)sender
+{
+    [[UserHandler sharedInstance] loginUsingFacebook];
+}
+
+- (IBAction)TWAction:(id)sender
+{
+    [[UserHandler sharedInstance] loginUsingTwitter];
+}
+
+- (IBAction)signUpAction:(id)sender
+{
+    [self performSegueWithIdentifier:@"SignUpViewController" sender:nil];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -142,4 +164,5 @@
         [SVProgressHUD showErrorWithStatus:@"Wrong Email or Password!"];
     }
 }
+
 @end

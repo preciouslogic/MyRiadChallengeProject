@@ -8,20 +8,13 @@
 
 #import <Foundation/Foundation.h>
 //#import <FacebookSDK/FacebookSDK.h>
-#import "User.h"
-typedef enum
-{
-    kLoginDone=0,
-    
-} UserDelegateType;
-
 
 @class UserHandler;
 
 @protocol UserHandlerDelegate <NSObject>
 @optional
 -(void)loginDone:(BOOL)status ;
-
+-(void)signUpDone:(BOOL)status ;
 @end
 
 
@@ -33,10 +26,11 @@ typedef enum
 }
 @property (nonatomic,weak)id<UserHandlerDelegate> delegate;
 @property (nonatomic,strong)UIView *delegateView;
-@property (nonatomic,strong)User *objUser;
+
 + (UserHandler *)sharedInstance;
 
 -(void)login:(NSString*)username password:(NSString*)password;
-
-
+-(void)signUp:(NSString*)username password:(NSString*)password Name:(NSString*)name alignmenttype:(int)type;
+-(void)loginUsingFacebook;
+-(void)loginUsingTwitter;
 @end
