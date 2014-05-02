@@ -139,7 +139,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="JkU-eE-gnJ">
-                                <rect key="frame" x="25" y="210.00000058678867" width="275" height="340"/>
+                                <rect key="frame" x="25" y="210.00000079532501" width="275" height="340"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>

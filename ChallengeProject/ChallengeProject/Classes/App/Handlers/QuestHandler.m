@@ -79,11 +79,17 @@
         
         PFQuery *playerAcceptedAndCompleteQuest = [PFQuery queryWithClassName:@"Quests"];
         [playerAcceptedAndCompleteQuest whereKey:@"acceptedBy" equalTo:[PFUser currentUser]];
-        [playerAcceptedAndCompleteQuest whereKey:@"alignment" equalTo:[NSNumber numberWithInt:type]];
+        if(type !=1)
+        {
+            [playerAcceptedAndCompleteQuest whereKey:@"alignment" equalTo:[NSNumber numberWithInt:type]];
+        }
         
         PFQuery *allNotAcceptedPost = [PFQuery queryWithClassName:@"Quests"];
         [allNotAcceptedPost whereKey:@"acceptedBy" equalTo:[NSNull null]];
-        [allNotAcceptedPost whereKey:@"alignment" equalTo:[NSNumber numberWithInt:type]];
+        if(type !=1)
+        {
+            [allNotAcceptedPost whereKey:@"alignment" equalTo:[NSNumber numberWithInt:type]];
+        }
         PFQuery *query = [PFQuery orQueryWithSubqueries:@[playerAcceptedAndCompleteQuest,allNotAcceptedPost]];
         query.skip = pageNo*20;
         query.limit = 20;
