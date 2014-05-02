@@ -60,15 +60,35 @@
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
-        self.btnFB.frame = CGRectMake(3, 85, 320, 34);
-        self.btnTW.frame = CGRectMake(246, 86, 320, 34);
+        
+        float btnFBXPos = 3;
+        float btnTWXPos = 246;
+        float txtFieldsXPos = 159;
+        float lblRemUserXPos = 172;
+        float switchRemXPos = 347;
+        float btnSignUpXPos = 186;
+        float btnLoginXPos = 281;
+        
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+            btnFBXPos = -35;
+            btnTWXPos = 196;
+            txtFieldsXPos = 109;
+            lblRemUserXPos = 122;
+            switchRemXPos = 297;
+            btnSignUpXPos = 136;
+            btnLoginXPos = 231;
+        }
+        
+        self.btnFB.frame = CGRectMake(btnFBXPos, 85, 320, 34);
+        self.btnTW.frame = CGRectMake(btnTWXPos, 86, 320, 34);
        
-        self.txtFieldUsername.frame = CGRectMake(159, 139, 250, 30);
-        self.txtFieldPassword.frame = CGRectMake(159, 177, 250, 30);
-        self.lblRememberUsername.frame = CGRectMake(172, 220, 183, 21);
-        self.switchRememberUsername.frame = CGRectMake(347, 215, 51, 31);
-        self.btnSignUp.frame = CGRectMake(186, 254, 73, 30);
-        self.btnLogin.frame = CGRectMake(281, 254, 95, 30);
+        self.txtFieldUsername.frame = CGRectMake(txtFieldsXPos, 139, 250, 30);
+        self.txtFieldPassword.frame = CGRectMake(txtFieldsXPos, 177, 250, 30);
+        self.lblRememberUsername.frame = CGRectMake(lblRemUserXPos, 220, 183, 21);
+        self.switchRememberUsername.frame = CGRectMake(switchRemXPos, 215, 51, 31);
+        self.btnSignUp.frame = CGRectMake(btnSignUpXPos, 254, 73, 30);
+        self.btnLogin.frame = CGRectMake(btnLoginXPos, 254, 95, 30);
     }
 }
 - (BOOL)shouldAutorotate {

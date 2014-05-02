@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "QuestHandler.h"
+#import "AsyncImageView.h"
 
 @interface DetailsViewController : UIViewController<QuestHandlerDelegate>
 {
@@ -23,4 +24,5 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapLocation;
 - (IBAction)MapTypeChangeAction:(id)sender;
 - (IBAction)acceptedAction:(id)sender;
+@property (weak, nonatomic) IBOutlet AsyncImageView *imgViewQuest;
 @end

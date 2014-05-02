@@ -50,9 +50,10 @@ static UserHandler *singleton = nil;
     
 }
 #pragma mark signUp
--(void)signUp:(NSString*)username password:(NSString*)password Name:(NSString*)name alignmenttype:(int)type
+-(void)signUp:(NSString*)username password:(NSString*)password Name:(NSString*)name alignmenttype:(int)type image:(UIImage*)userImage
 {
     [SVProgressHUD showWithStatus:@"Signing Up...."];
+   
     PFUser *user = [PFUser user];
     user.username = username;
     user.password = password;
@@ -60,7 +61,12 @@ static UserHandler *singleton = nil;
     //user.email = [NSString stringWithFormat:@"%@@gmail.com",username];
     user[@"alignment"] = [NSNumber numberWithInt:type];
     user[@"name"] = name;
-    
+    if(userImage)
+    {
+        NSData *imageData = UIImagePNGRepresentation(userImage);
+        PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+        user[@"customUserImage"] = imageFile;
+    }
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
         [SVProgressHUD dismiss];

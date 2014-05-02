@@ -53,6 +53,8 @@
 		B3A72B591913824F0096300A /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B511913824F0096300A /* grayArrow@2x.png */; };
 		B3A72B5A1913824F0096300A /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B521913824F0096300A /* whiteArrow.png */; };
 		B3A72B5B1913824F0096300A /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B531913824F0096300A /* whiteArrow@2x.png */; };
+		B3A72B5D1913AFC60096300A /* placeHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B5C1913AFC60096300A /* placeHolder.png */; };
+		B3A72B611913B18F0096300A /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A72B601913B18F0096300A /* AsyncImageView.m */; };
 		B3F83716190CB6C400CF8852 /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F83715190CB6C400CF8852 /* NavViewController.m */; };
 		B3F83718190D184B00CF8852 /* Quests.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3F83717190D184B00CF8852 /* Quests.plist */; };
 		B3F8371B190D1C2700CF8852 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8371A190D1C2700CF8852 /* Quest.m */; };
@@ -136,6 +138,9 @@
 		B3A72B511913824F0096300A /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		B3A72B521913824F0096300A /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		B3A72B531913824F0096300A /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		B3A72B5C1913AFC60096300A /* placeHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHolder.png; sourceTree = "<group>"; };
+		B3A72B5F1913B18F0096300A /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		B3A72B601913B18F0096300A /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		B3F83714190CB6C400CF8852 /* NavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavViewController.h; sourceTree = "<group>"; };
 		B3F83715190CB6C400CF8852 /* NavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavViewController.m; sourceTree = "<group>"; };
 		B3F83717190D184B00CF8852 /* Quests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Quests.plist; sourceTree = "<group>"; };
@@ -159,11 +164,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32631BE191164D90063039B /* QuartzCore.framework in Frameworks */,
 				B32631D01911781B0063039B /* Social.framework in Frameworks */,
 				B32631C4191164F60063039B /* SystemConfiguration.framework in Frameworks */,
 				B32631C2191164E60063039B /* StoreKit.framework in Frameworks */,
 				B32631C0191164DD0063039B /* Security.framework in Frameworks */,
-				B32631BE191164D90063039B /* QuartzCore.framework in Frameworks */,
 				B32631BC191164CE0063039B /* MobileCoreServices.framework in Frameworks */,
 				B32631BA191164C60063039B /* libz.dylib in Frameworks */,
 				B32631B8191164BB0063039B /* CoreLocation.framework in Frameworks */,
@@ -261,6 +266,7 @@
 		B364F1A7190C1E49004B82B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A72B5C1913AFC60096300A /* placeHolder.png */,
 				B3A72B4C1913824F0096300A /* blackArrow.png */,
 				B3A72B4D1913824F0096300A /* blackArrow@2x.png */,
 				B3A72B4E1913824F0096300A /* blueArrow.png */,
@@ -357,6 +363,7 @@
 		B364F1DD190C2A06004B82B3 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B3A72B5E1913B18F0096300A /* AsynImageView */,
 				B3A72B44191381FA0096300A /* PullToRefesh */,
 				B3A72B3E191381EA0096300A /* SVProgressHUD */,
 			);
@@ -422,6 +429,15 @@
 				B3A72B46191381FA0096300A /* EGORefreshTableHeaderView.m */,
 			);
 			path = PullToRefesh;
+			sourceTree = "<group>";
+		};
+		B3A72B5E1913B18F0096300A /* AsynImageView */ = {
+			isa = PBXGroup;
+			children = (
+				B3A72B5F1913B18F0096300A /* AsyncImageView.h */,
+				B3A72B601913B18F0096300A /* AsyncImageView.m */,
+			);
+			path = AsynImageView;
 			sourceTree = "<group>";
 		};
 		B3FF1A86190EC423007D0903 /* Setting */ = {
@@ -524,6 +540,7 @@
 				B3A72B561913824F0096300A /* blueArrow.png in Resources */,
 				B3A72B5A1913824F0096300A /* whiteArrow.png in Resources */,
 				B3A72B581913824F0096300A /* grayArrow.png in Resources */,
+				B3A72B5D1913AFC60096300A /* placeHolder.png in Resources */,
 				B364F1AB190C1E49004B82B3 /* InfoPlist.strings in Resources */,
 				B3A72B5B1913824F0096300A /* whiteArrow@2x.png in Resources */,
 				B3F83718190D184B00CF8852 /* Quests.plist in Resources */,
@@ -546,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F83727190D285700CF8852 /* QuestHandler.m in Sources */,
+				B3A72B611913B18F0096300A /* AsyncImageView.m in Sources */,
 				B364F1B1190C1E49004B82B3 /* AppDelegate.m in Sources */,
 				B3F83724190D255400CF8852 /* UserHandler.m in Sources */,
 				B3F83730190D4ABF00CF8852 /* AnnotationMaker.m in Sources */,
@@ -706,6 +724,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChallengeProject/ChallengeProject-Prefix.pch";
 				INFOPLIST_FILE = "ChallengeProject/ChallengeProject-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -725,6 +747,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChallengeProject/ChallengeProject-Prefix.pch";
 				INFOPLIST_FILE = "ChallengeProject/ChallengeProject-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

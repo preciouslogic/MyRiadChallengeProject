@@ -30,7 +30,7 @@
 + (UserHandler *)sharedInstance;
 
 -(void)login:(NSString*)username password:(NSString*)password;
--(void)signUp:(NSString*)username password:(NSString*)password Name:(NSString*)name alignmenttype:(int)type;
+-(void)signUp:(NSString*)username password:(NSString*)password Name:(NSString*)name alignmenttype:(int)type image:(UIImage*)userImage;
 -(void)loginUsingFacebook;
 -(void)loginUsingTwitter;
 @end

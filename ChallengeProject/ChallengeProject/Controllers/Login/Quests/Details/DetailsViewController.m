@@ -10,6 +10,7 @@
 #import "CommonMethods.h"
 #import "AnnotationMaker.h"
 #import <Parse/Parse.h>
+
 @interface DetailsViewController ()
 
 @end
@@ -57,6 +58,8 @@
         self.btnAccepted.hidden = YES;
         self.btnAccepted.enabled = NO;
     }
+    self.imgViewQuest.image = [UIImage imageNamed:placeHolderImage];
+    self.imgViewQuest.imageURL = self.objQuest.imageURL;
 	// Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -93,19 +96,54 @@
     [self.view endEditing:YES];
     if (orientation==UIInterfaceOrientationPortrait)
     {
-        self.txtFieldHeading.frame = CGRectMake(5, 70, 310, 40);
-        self.txtFieldDetails.frame = CGRectMake(5, 143, 310, 194);
-        self.lblPosted.frame = CGRectMake(8, 115, 302, 20);
-        self.segmentMapType.frame = CGRectMake(34, 345, 247, 29);
-        self.mapLocation.frame = CGRectMake(5, 381, 310, 180);
+        self.imgViewQuest.frame = CGRectMake(4, 68, 100, 100);
+        self.txtFieldHeading.frame = CGRectMake(110, 67, 205, 62);
+        self.txtFieldDetails.frame = CGRectMake(5, 172, 310, 140);
+        self.lblPosted.frame =CGRectMake(111, 131, 205, 33);
+        self.segmentMapType.frame = CGRectMake(34, 322, 247, 29);
+        self.imgViewQuest.frame = CGRectMake(5, 68, 100, 100);
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+            self.mapLocation.frame = CGRectMake(5, 361, 310, 112);
+        }
+        else
+        {
+             self.mapLocation.frame = CGRectMake(5, 361, 310, 180);
+        }
+       
+       
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
-        self.txtFieldHeading.frame = CGRectMake(4, 70, 558, 35);
-        self.txtFieldDetails.frame = CGRectMake(5, 131, 558, 68);
-        self.lblPosted.frame = CGRectMake(8, 109, 542, 20);
-        self.segmentMapType.frame = CGRectMake(155, 205, 247, 29);
-        self.mapLocation.frame = CGRectMake(5, 240, 558, 73);
+        CGRect imgViewQuestFrame = CGRectMake(5, 80, 100, 100);
+        CGRect txtFieldHeadingFrame = CGRectMake(110, 70, 448, 35);
+        CGRect txtFieldDetailsFrame = CGRectMake(110, 131,448, 68);
+        CGRect lblPostFrame = CGRectMake(113, 109, 442, 20);
+        CGRect segmentMapFrame = CGRectMake(155, 205, 247, 29);
+        CGRect mapLocationFrame = CGRectMake(5, 240, 558, 73);
+       
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+            txtFieldHeadingFrame.origin.x = 110;
+            txtFieldHeadingFrame.size.width = 380;
+            
+            txtFieldDetailsFrame.origin.x = 110;
+            txtFieldDetailsFrame.size.width = 380;
+            
+            lblPostFrame.origin.x = 113;
+            lblPostFrame.size.width = 378;
+            
+            mapLocationFrame.size.width = 470;
+            
+            
+        }
+    
+        self.imgViewQuest.frame = imgViewQuestFrame;
+        self.txtFieldHeading.frame = txtFieldHeadingFrame;
+        self.txtFieldDetails.frame = txtFieldDetailsFrame;
+        self.lblPosted.frame = lblPostFrame;
+        self.segmentMapType.frame = segmentMapFrame;
+        self.mapLocation.frame = mapLocationFrame;
     }
 }
 - (BOOL)shouldAutorotate {
@@ -185,11 +223,32 @@
             annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:parkingAnnotationIdentifier];
             if(((AnnotationMaker*)annotation).type == 0)
             {
-                annotationView.image = [UIImage imageNamed:@"locationpin.png"];
+                AsyncImageView *imageView = [[AsyncImageView alloc] initWithImage:[UIImage imageNamed:placeHolderImage]];
+                imageView.frame = CGRectMake(0, 0, 30, 30);
+                imageView.imageURL = self.objQuest.imageURL;
+                [annotationView addSubview:imageView] ;
+                
+                
             }
             else
             {
-                annotationView.image = [UIImage imageNamed:@"userpin.png"];
+                UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:placeHolderImage]];
+               
+                if([[PFUser currentUser] objectForKey:@"customUserImage"] && [[PFUser currentUser] objectForKey:@"customUserImage"]!= [NSNull null])
+                {
+                    PFFile *userImageFile = [PFUser currentUser][@"customUserImage"];
+                    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                        if (!error) {
+                            imgView.image = [UIImage imageWithData:imageData];
+                        }
+                    }];
+                }
+                imgView.frame = CGRectMake(0, 0, 30, 30);
+                imgView.clipsToBounds = YES;
+                imgView.layer.cornerRadius = imgView.bounds.size.height/2;//half of the width
+                imgView.layer.borderColor=[UIColor clearColor].CGColor;
+                [annotationView addSubview:imgView] ;
+                //annotationView.image = [UIImage imageNamed:@"userpin.png"];
             }
             // annotationView.image=[UIImage imageNamed:@"Checkin-icon-.png"];
         }

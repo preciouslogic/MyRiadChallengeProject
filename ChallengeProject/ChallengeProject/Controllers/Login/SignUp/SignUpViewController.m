@@ -46,13 +46,27 @@
 {
     
 }
+- (IBAction)imageTapAction:(id)sender
+{
+    if(!selectedImage)
+    {
+        [self callActionSheet];
+    }
+    else
+    {
+        UIActionSheet *popupMenu = [[UIActionSheet alloc] initWithTitle:@"Select Option" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change Photo", @"Remove Photo", nil];
+        popupMenu.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        popupMenu.tag = 101;
+        [popupMenu showInView:self.view];
+    }
+}
 
 - (IBAction)signUpAction:(id)sender
 {
     if([CommonMethods countStringLength:self.txtFieldUsername.text].length>0 && [CommonMethods countStringLength:self.txtFieldPassword.text].length>0 && [CommonMethods countStringLength:self.txtFieldName.text].length>0 )
     {
-         
-         [[UserHandler sharedInstance] signUp:self.txtFieldUsername.text password:self.txtFieldPassword.text Name:self.txtFieldName.text alignmenttype:self.segmentControllerAlignment.selectedSegmentIndex];
+        [self.view endEditing:YES];
+         [[UserHandler sharedInstance] signUp:self.txtFieldUsername.text password:self.txtFieldPassword.text Name:self.txtFieldName.text alignmenttype:self.segmentControllerAlignment.selectedSegmentIndex image:selectedImage];
     }
     else if([CommonMethods countStringLength:self.txtFieldUsername.text].length<=0)
     {
@@ -87,20 +101,33 @@
     {
         self.txtFieldUsername.frame = CGRectMake(25, 239, 270, 30);
         self.txtFieldPassword.frame = CGRectMake(25, 277, 270, 30);
-        self.txtFieldName.frame = CGRectMake(25, 260, 270, 30);
+        self.txtFieldName.frame = CGRectMake(25, 360, 270, 30);
         self.imgUser.frame = CGRectMake(100, 81, 120, 120);
         self.segmentControllerAlignment.frame = CGRectMake(25, 410, 270, 29);
         self.btnSignUp.frame = CGRectMake(0, 461, 320, 30);
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
-        self.txtFieldUsername.frame = CGRectMake(177, 88, 270, 30);
-        self.txtFieldPassword.frame = CGRectMake(177, 127, 270, 30);
-        self.txtFieldName.frame = CGRectMake(177, 180, 270, 30);
-        self.imgUser.frame = CGRectMake(20, 82, 120, 120);
-        self.btnSignUp.frame = CGRectMake(149, 260, 320, 30);
-        self.segmentControllerAlignment.frame = CGRectMake(177, 220, 270, 29);
+        float txtFieldsXPos = 177;
+        
+        float imgUserXPos = 20;
+        float btnSignUpXPos = 150;
+//        if(g_IS_IPHONE_4_SCREEN)
+//        {
+////             txtFieldsXPos = 100;
+////             imgUserXPos = 120;
+//             btnSignUpXPos = 150;
+//            
+//        }
+       
+        self.txtFieldUsername.frame = CGRectMake(txtFieldsXPos, 88, 270, 30);
+        self.txtFieldPassword.frame = CGRectMake(txtFieldsXPos, 127, 270, 30);
+        self.txtFieldName.frame = CGRectMake(txtFieldsXPos, 180, 270, 30);
+        self.imgUser.frame = CGRectMake(imgUserXPos, 90, 120, 120);
+        self.btnSignUp.frame = CGRectMake(btnSignUpXPos, 260, 320, 30);
+        self.segmentControllerAlignment.frame = CGRectMake(txtFieldsXPos, 220, 270, 29);
     }
+    self.btnImageTap.frame = self.imgUser.frame;
 }
 - (BOOL)shouldAutorotate {
     
@@ -112,6 +139,80 @@
 {
     [self.view endEditing:YES];
 }
+#pragma mark helpingMethods
+-(void)callActionSheet
+{
+    UIActionSheet *popupMenu = [[UIActionSheet alloc] initWithTitle:@"Image Selection" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose from Gallary", nil];
+    popupMenu.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupMenu showInView:self.view];
+}
+#pragma mark ActionSheetDelegate
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if(actionSheet.tag == 101)
+    {
+        if (buttonIndex == 0) {
+            
+            [self callActionSheet];
+        }
+        else if (buttonIndex == 1)
+        {
+            
+            selectedImage = Nil;
+            self.imgUser.image = [UIImage imageNamed:placeHolderImage];
+            
+        }
+    }
+    else
+    {
+        if (buttonIndex == 0) {
+            
+            NSLog(@"Take Photo");
+            [CommonMethods takePhoto:self];
+        }
+        else if (buttonIndex == 1) {
+            
+            NSLog( @"Gallary Choose");
+            [CommonMethods selectPhoto:self];
+            
+        }
+        else if (buttonIndex == 2) {
+            
+            NSLog( @"Cancel Button Clicked");
+            
+        }
+ 
+    }
+    
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
+    {
+        selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        self.imgUser.image = selectedImage;
+    }
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+        
+        
+    }];
+    
+    
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+        
+        
+    }];
+
+}
+
 #pragma mark TextFieldDelegates
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -153,4 +254,5 @@
         [self performSegueWithIdentifier:@"QuestViewController" sender:Nil];
     }
 }
+
 @end

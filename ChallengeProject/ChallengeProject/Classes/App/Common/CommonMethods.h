@@ -33,9 +33,7 @@
 +(void)removeFromUserDefaultValueForKey:(NSString*)key;
 
 +(NSString *)countStringLength:(NSString *)str;
-
-//
-//+(void)callFacebookShare:(NSString*)feedTxt feedImageLink:(NSString*)urlStr bussinessName:(NSString*)bName;
-//+(void)callShareOnTwitterWithImage:(UIImage *)image withStatus:(NSString *)status delegateView:(id)delegateView;
++(void)takePhoto:(id)delegate;
++(void)selectPhoto:(id)delegate;
 
 @end

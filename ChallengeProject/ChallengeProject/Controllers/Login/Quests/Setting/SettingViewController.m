@@ -96,15 +96,40 @@
         self.txtFieldName.frame = CGRectMake(25, 90, 265, 30);
         self.segmentControllerType.frame = CGRectMake(31, 130, 258, 29);
         self.btnUpdateLocation.frame = CGRectMake(40, 170, 249, 30);
-        self.locationMap.frame = CGRectMake(20, 210, 280, 340);
+        
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+             self.locationMap.frame = CGRectMake(20, 210, 280, 250);
+        }
+        else
+        {
+             self.locationMap.frame = CGRectMake(20, 210, 280, 340);
+        }
+        
+       
         
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
-        self.txtFieldName.frame = CGRectMake(151, 73, 266, 30);
-        self.segmentControllerType.frame = CGRectMake(154, 113, 260, 29);
-        self.btnUpdateLocation.frame = CGRectMake(159, 148, 250, 30);
-        self.locationMap.frame = CGRectMake(20, 180, 528, 130);
+        float txtfiledXPos = 151;
+        float segnType = 154;
+        float btnUpdate = 159;
+        float locationWidth = 528;
+        
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+             txtfiledXPos = 100;
+             segnType = 104;
+             btnUpdate = 109;
+             locationWidth = 440;
+        }
+       
+        
+        self.txtFieldName.frame = CGRectMake(txtfiledXPos, 73, 266, 30);
+        self.segmentControllerType.frame = CGRectMake(segnType, 113, 260, 29);
+        self.btnUpdateLocation.frame = CGRectMake(btnUpdate, 148, 250, 30);
+        self.locationMap.frame = CGRectMake(20, 180, locationWidth, 130);
+        
         
     }
     

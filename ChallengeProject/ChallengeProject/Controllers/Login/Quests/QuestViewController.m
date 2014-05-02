@@ -11,7 +11,7 @@
 #import "SVProgressHUD.h"
 #import "DetailsViewController.h"
 #import "NoDataCell.h"
-
+#import "CommonMethods.h"
 @interface QuestViewController ()
 
 @end
@@ -42,6 +42,21 @@
 		
 		
 	}
+    self.imgViewUserProfile.image = [UIImage imageNamed:placeHolderImage];
+    //NSLog(@"%@",[PFUser currentUser]);
+    
+    if([[PFUser currentUser] objectForKey:@"customUserImage"] && [[PFUser currentUser] objectForKey:@"customUserImage"]!= [NSNull null])
+    {
+        PFFile *userImageFile = [PFUser currentUser][@"customUserImage"];
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                self.imgViewUserProfile.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
+    self.imgViewUserProfile.clipsToBounds = YES;
+    self.imgViewUserProfile.layer.cornerRadius = self.imgViewUserProfile.bounds.size.height/2;//half of the width
+    self.imgViewUserProfile.layer.borderColor=[UIColor clearColor].CGColor;
 	[_refreshHeaderView refreshLastUpdatedDate];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -108,7 +123,9 @@
         cell.lblPostedBy.text = [NSString stringWithFormat:@"Posted By: %@",[objQuest.objOwner objectForKey:@"name"]];
         cell.lblRewards.text = [NSString stringWithFormat:@"Rewards: %d Gold %d XP",objQuest.goldRewards,objQuest.xpRewards];
         // Configure the cell...
-    
+        cell.imgViewQuest.image = [UIImage imageNamed:placeHolderImage];
+        cell.imgViewQuest.imageURL = objQuest.imageURL;
+        NSLog(@"%@",objQuest.imageURL );
         return cell;
     }
     else
@@ -167,14 +184,25 @@
     [self.view endEditing:YES];
     if (orientation==UIInterfaceOrientationPortrait)
     {
-        self.segmentFilters.frame = CGRectMake(25, 20, 270, 29);
+        self.segmentFilters.frame = CGRectMake(90, 20, 220, 29);
         self.tblViewQuestData.frame = CGRectMake(0, 65, 320, 439);
-        
+        self.imgViewUserProfile.frame = CGRectMake(15, 8, 50, 50);
     }
     else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
     {
+        
+        
+        self.imgViewUserProfile.frame = CGRectMake(15, 2, 50, 50);
         self.segmentFilters.frame = CGRectMake(144, 14, 270, 29);
-        self.tblViewQuestData.frame = CGRectMake(0, 56, 568, 200);
+        if(g_IS_IPHONE_4_SCREEN)
+        {
+            self.tblViewQuestData.frame = CGRectMake(0, 56, 480, 200);
+        }
+        else
+        {
+            self.tblViewQuestData.frame = CGRectMake(0, 56, 568, 200);
+        }
+        
         
     }
 }

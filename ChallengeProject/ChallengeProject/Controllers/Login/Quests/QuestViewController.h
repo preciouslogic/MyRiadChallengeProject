@@ -10,6 +10,7 @@
 #import "QuestHandler.h"
 #import "SettingViewController.h"
 #import "EGORefreshTableHeaderView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface QuestViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,QuestHandlerDelegate,SettingViewControllerDelegates,EGORefreshTableHeaderDelegate>
@@ -32,6 +33,8 @@
 @property (assign,nonatomic)BOOL isSignUpCall;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentFilters;
 @property (weak, nonatomic) IBOutlet UITableView *tblViewQuestData;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUserProfile;
+
 
 - (IBAction)settingAction:(id)sender;
 - (IBAction)logoutAction:(id)sender;

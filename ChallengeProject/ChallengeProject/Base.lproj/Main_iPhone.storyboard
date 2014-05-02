@@ -139,7 +139,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="JkU-eE-gnJ">
-                                <rect key="frame" x="25" y="210.00000038486093" width="275" height="340"/>
+                                <rect key="frame" x="25" y="210.00000058678867" width="275" height="340"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -164,7 +164,7 @@
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Done">
+                                <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -199,43 +199,48 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" rowHeight="92" id="Kkv-6N-vkh" customClass="QuestCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="92"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" rowHeight="80" id="Kkv-6N-vkh" customClass="QuestCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kkv-6N-vkh" id="fn0-8f-i5Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="91"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quest Name Goes Here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="apg-bR-wTa">
-                                                    <rect key="frame" x="5" y="5" width="287" height="32"/>
+                                                    <rect key="frame" x="88" y="1" width="204" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By:Billy Joe Bob" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2r-Co-EOf">
-                                                    <rect key="frame" x="5" y="34" width="287" height="21"/>
+                                                    <rect key="frame" x="88" y="30" width="200" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards: 10000 Gold 10000 XP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jGL-XH-P1T">
-                                                    <rect key="frame" x="5" y="62" width="287" height="21"/>
+                                                    <rect key="frame" x="88" y="56" width="204" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7ev-pY-nab" customClass="AsyncImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imgViewQuest" destination="7ev-pY-nab" id="2tI-x1-cSG"/>
                                             <outlet property="lblPostedBy" destination="w2r-Co-EOf" id="ygR-0F-zA6"/>
                                             <outlet property="lblQuestHeading" destination="apg-bR-wTa" id="tRV-Vv-gWK"/>
                                             <outlet property="lblRewards" destination="jGL-XH-P1T" id="etS-Cx-bH5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotDataCell" rowHeight="50" id="xcz-hp-WaD" customClass="NoDataCell">
-                                        <rect key="frame" x="0.0" y="114" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="102" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xcz-hp-WaD" id="yQY-Q3-S7v">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -261,7 +266,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="iMu-3c-ZSs">
-                                <rect key="frame" x="25" y="20" width="270" height="29"/>
+                                <rect key="frame" x="90" y="20" width="220" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Available"/>
@@ -272,6 +277,10 @@
                                     <action selector="filterAction:" destination="IDS-zI-2Nc" eventType="valueChanged" id="49C-bl-d8O"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aef-4Z-xHZ">
+                                <rect key="frame" x="15" y="8" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -307,6 +316,7 @@
                     <connections>
                         <outlet property="btnLogout" destination="zfu-cy-TmJ" id="vfV-eo-UXN"/>
                         <outlet property="btnSetting" destination="OIa-tT-M3g" id="M1j-K3-Xhy"/>
+                        <outlet property="imgViewUserProfile" destination="aef-4Z-xHZ" id="Yms-8c-4br"/>
                         <outlet property="segmentFilters" destination="iMu-3c-ZSs" id="sE9-MF-fXp"/>
                         <outlet property="tblViewQuestData" destination="1rZ-od-Cmt" id="Yvu-xO-Oqj"/>
                         <segue destination="80F-zi-rUg" kind="modal" identifier="SettingViewController" id="34T-wX-OnE"/>
@@ -315,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xuB-om-rYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208" y="605"/>
+            <point key="canvasLocation" x="2242" y="609"/>
         </scene>
         <!--Quest View Controller-->
         <scene sceneID="EEv-Z8-7Fl">
@@ -343,16 +353,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By: Billy Joe Bob" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3dZ-Do-4c7">
-                                <rect key="frame" x="8" y="115" width="302" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By: Billy Joe Bob" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3dZ-Do-4c7">
+                                <rect key="frame" x="111" y="131" width="205" height="33"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="BHT-ja-Um1">
-                                <rect key="frame" x="5" y="143" width="310" height="194"/>
+                                <rect key="frame" x="5" y="172" width="310" height="140"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -361,23 +371,23 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="7X5-it-gnq">
-                                <rect key="frame" x="5" y="70" width="310" height="40"/>
+                                <rect key="frame" x="110" y="67" width="205" height="62"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Oc8-Ei-G9K">
-                                <rect key="frame" x="5" y="381" width="310" height="180"/>
+                                <rect key="frame" x="5" y="361" width="310" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="OAi-Li-d7D" id="YNb-ZQ-x3M"/>
                                 </connections>
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="lja-c1-uvf">
-                                <rect key="frame" x="34" y="345" width="247" height="29"/>
+                                <rect key="frame" x="34" y="322" width="247" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Map"/>
@@ -388,6 +398,10 @@
                                     <action selector="MapTypeChangeAction:" destination="OAi-Li-d7D" eventType="valueChanged" id="dsu-WG-54X"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aEz-qe-Pgk" customClass="AsyncImageView">
+                                <rect key="frame" x="5" y="68" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -405,6 +419,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnAccepted" destination="lnb-l1-nbK" id="AUg-Wl-nAp"/>
+                        <outlet property="imgViewQuest" destination="aEz-qe-Pgk" id="Q2G-oS-qqY"/>
                         <outlet property="lblPosted" destination="3dZ-Do-4c7" id="nAK-Uc-8lP"/>
                         <outlet property="mapLocation" destination="Oc8-Ei-G9K" id="hUH-po-CDm"/>
                         <outlet property="segmentMapType" destination="lja-c1-uvf" id="BkL-Cn-KcJ"/>
@@ -491,12 +506,29 @@
                                     <action selector="signUpAction:" destination="NXr-7X-EqD" eventType="touchUpInside" id="JY0-JA-Arf"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder.png" id="Jne-Xt-9DK">
+                                <rect key="frame" x="92" y="84" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TEc-Gh-nOj">
+                                <rect key="frame" x="92" y="89" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageTapAction:" destination="NXr-7X-EqD" eventType="touchUpInside" id="VHF-wW-Szz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="p6k-5v-3Dr"/>
                     <connections>
+                        <outlet property="btnImageTap" destination="TEc-Gh-nOj" id="oLZ-5U-UU9"/>
                         <outlet property="btnSignUp" destination="YjZ-qR-PWI" id="n6M-s0-Mwv"/>
+                        <outlet property="imgUser" destination="Jne-Xt-9DK" id="lPC-j3-KQz"/>
                         <outlet property="segmentControllerAlignment" destination="ds4-Ao-bz8" id="SAL-sd-C8h"/>
                         <outlet property="txtFieldName" destination="Gpx-0f-Hzj" id="iy9-9D-gcN"/>
                         <outlet property="txtFieldPassword" destination="PuW-48-2Ev" id="Jwd-DW-9tC"/>
@@ -544,6 +576,7 @@
     </scenes>
     <resources>
         <image name="fb.png" width="199" height="34"/>
+        <image name="placeHolder.png" width="622" height="415"/>
         <image name="tw.png" width="200" height="33"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -552,6 +585,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p0D-KB-rWa"/>
+        <segue reference="Op9-0u-bG0"/>
     </inferredMetricsTieBreakers>
 </document>

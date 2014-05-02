@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UserHandler.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
-
-@interface SignUpViewController : UIViewController<UserHandlerDelegate,UITextFieldDelegate>
+@interface SignUpViewController : UIViewController<UserHandlerDelegate,UITextFieldDelegate,UIActionSheetDelegate>
+{
+    UIImage *selectedImage;
+}
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldUsername;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldName;
@@ -21,5 +24,7 @@
 
 - (IBAction)AlignmentAction:(id)sender;
 - (IBAction)signUpAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnImageTap;
+- (IBAction)imageTapAction:(id)sender;
 
 @end
