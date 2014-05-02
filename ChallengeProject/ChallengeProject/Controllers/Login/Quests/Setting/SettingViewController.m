@@ -9,6 +9,8 @@
 #import "SettingViewController.h"
 #import "CommonMethods.h"
 #import "AnnotationMaker.h"
+#import <Parse/Parse.h>
+#import "SVProgressHUD.h"
 @interface SettingViewController ()
 
 @end
@@ -28,13 +30,23 @@
 {
     [super viewDidLoad];
     
-    
-       
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.txtFieldName.text = [[PFUser currentUser] objectForKey:@"name"];
+    [self.segmentControllerType setSelectedSegmentIndex:[[[PFUser currentUser] objectForKey:@"alignment"] intValue]];
+    latitude = -1;
+    longitude = -1;
+    PFGeoPoint *objPoint = [[PFUser currentUser] objectForKey:@"location"];
+    if(objPoint)
+    {
+        AnnotationMaker *Annotation1=[[AnnotationMaker alloc] initWithTitle:@"My Location" withSubTitle:@"Having fun...!" andCoordinate:CLLocationCoordinate2DMake(objPoint.latitude, objPoint.longitude)];
     
+        [self.locationMap addAnnotation:Annotation1];
     
+        //NSLog(@"Annotation Count::%d",[self.BusinessMap.annotations count]);
+        [self zoomMapViewToFitAnnotations:self.locationMap animated:YES];
+    }
     
 	// Do any additional setup after loading the view.
 }
@@ -51,8 +63,23 @@
 }
 - (IBAction)doneAction:(id)sender
 {
-    [self.delegate settingViewControllerDone:[self.segmentControllerType titleForSegmentAtIndex:self.segmentControllerType.selectedSegmentIndex]];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if([CommonMethods countStringLength:self.txtFieldName.text].length>0)
+    {
+        PFUser *objPFUser = [PFUser currentUser];
+        objPFUser[@"alignment"] = [NSNumber numberWithInt:self.segmentControllerType.selectedSegmentIndex];
+        objPFUser[@"name"] = self.txtFieldName.text;
+        if(latitude!=-1 && longitude !=-1)
+        {
+            objPFUser[@"location"] = [PFGeoPoint geoPointWithLatitude:latitude longitude:-longitude];
+        }
+        [objPFUser saveInBackground];
+        [self.delegate settingViewControllerDone:self.segmentControllerType.selectedSegmentIndex];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"Name field can't be empty"];
+    }
 }
 - (IBAction)cancelAction:(id)sender
 {
@@ -116,6 +143,8 @@
     
     //NSLog(@"Annotation Count::%d",[self.BusinessMap.annotations count]);
     [self zoomMapViewToFitAnnotations:self.locationMap animated:YES];
+    latitude = newLocation.coordinate.latitude;
+    longitude = newLocation.coordinate.longitude;
 }
 
 - (void)locationManager:(CLLocationManager *)manager

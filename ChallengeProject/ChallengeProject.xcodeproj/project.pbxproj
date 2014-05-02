@@ -37,12 +37,22 @@
 		B364F1CD190C1E49004B82B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B364F1CB190C1E49004B82B3 /* InfoPlist.strings */; };
 		B364F1CF190C1E49004B82B3 /* ChallengeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1CE190C1E49004B82B3 /* ChallengeProjectTests.m */; };
 		B364F1E5190C2AA3004B82B3 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1E3190C2AA3004B82B3 /* CommonMethods.m */; };
-		B364F1EA190C2EF1004B82B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B364F1E7190C2EF1004B82B3 /* SVProgressHUD.bundle */; };
-		B364F1EB190C2EF1004B82B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1E9190C2EF1004B82B3 /* SVProgressHUD.m */; };
 		B364F1EE190C2F36004B82B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1ED190C2F36004B82B3 /* LoginViewController.m */; };
 		B364F1F4190C2FA6004B82B3 /* QuestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1F3190C2FA6004B82B3 /* QuestCell.m */; };
 		B364F1FA190C30F4004B82B3 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1F9190C30F4004B82B3 /* QuestViewController.m */; };
 		B364F1FD190C3812004B82B3 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B364F1FC190C3812004B82B3 /* DetailsViewController.m */; };
+		B3A097C919137E870082185C /* NoDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A097C819137E870082185C /* NoDataCell.m */; };
+		B3A72B42191381EA0096300A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B3F191381EA0096300A /* SVProgressHUD.bundle */; };
+		B3A72B43191381EA0096300A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A72B41191381EA0096300A /* SVProgressHUD.m */; };
+		B3A72B4A191381FA0096300A /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A72B46191381FA0096300A /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B3A72B541913824F0096300A /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B4C1913824F0096300A /* blackArrow.png */; };
+		B3A72B551913824F0096300A /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B4D1913824F0096300A /* blackArrow@2x.png */; };
+		B3A72B561913824F0096300A /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B4E1913824F0096300A /* blueArrow.png */; };
+		B3A72B571913824F0096300A /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B4F1913824F0096300A /* blueArrow@2x.png */; };
+		B3A72B581913824F0096300A /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B501913824F0096300A /* grayArrow.png */; };
+		B3A72B591913824F0096300A /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B511913824F0096300A /* grayArrow@2x.png */; };
+		B3A72B5A1913824F0096300A /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B521913824F0096300A /* whiteArrow.png */; };
+		B3A72B5B1913824F0096300A /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A72B531913824F0096300A /* whiteArrow@2x.png */; };
 		B3F83716190CB6C400CF8852 /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F83715190CB6C400CF8852 /* NavViewController.m */; };
 		B3F83718190D184B00CF8852 /* Quests.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3F83717190D184B00CF8852 /* Quests.plist */; };
 		B3F8371B190D1C2700CF8852 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F8371A190D1C2700CF8852 /* Quest.m */; };
@@ -103,9 +113,6 @@
 		B364F1E2190C2AA3004B82B3 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
 		B364F1E3190C2AA3004B82B3 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
 		B364F1E4190C2AA3004B82B3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		B364F1E7190C2EF1004B82B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		B364F1E8190C2EF1004B82B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		B364F1E9190C2EF1004B82B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		B364F1EC190C2F36004B82B3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B364F1ED190C2F36004B82B3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B364F1F2190C2FA6004B82B3 /* QuestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCell.h; sourceTree = "<group>"; };
@@ -114,6 +121,21 @@
 		B364F1F9190C30F4004B82B3 /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = "<group>"; };
 		B364F1FB190C3812004B82B3 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		B364F1FC190C3812004B82B3 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		B3A097C719137E870082185C /* NoDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataCell.h; sourceTree = "<group>"; };
+		B3A097C819137E870082185C /* NoDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoDataCell.m; sourceTree = "<group>"; };
+		B3A72B3F191381EA0096300A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		B3A72B40191381EA0096300A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		B3A72B41191381EA0096300A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		B3A72B45191381FA0096300A /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		B3A72B46191381FA0096300A /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		B3A72B4C1913824F0096300A /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		B3A72B4D1913824F0096300A /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		B3A72B4E1913824F0096300A /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		B3A72B4F1913824F0096300A /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		B3A72B501913824F0096300A /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		B3A72B511913824F0096300A /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		B3A72B521913824F0096300A /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		B3A72B531913824F0096300A /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		B3F83714190CB6C400CF8852 /* NavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavViewController.h; sourceTree = "<group>"; };
 		B3F83715190CB6C400CF8852 /* NavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavViewController.m; sourceTree = "<group>"; };
 		B3F83717190D184B00CF8852 /* Quests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Quests.plist; sourceTree = "<group>"; };
@@ -239,6 +261,14 @@
 		B364F1A7190C1E49004B82B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A72B4C1913824F0096300A /* blackArrow.png */,
+				B3A72B4D1913824F0096300A /* blackArrow@2x.png */,
+				B3A72B4E1913824F0096300A /* blueArrow.png */,
+				B3A72B4F1913824F0096300A /* blueArrow@2x.png */,
+				B3A72B501913824F0096300A /* grayArrow.png */,
+				B3A72B511913824F0096300A /* grayArrow@2x.png */,
+				B3A72B521913824F0096300A /* whiteArrow.png */,
+				B3A72B531913824F0096300A /* whiteArrow@2x.png */,
 				B32631CB191176B30063039B /* fb.png */,
 				B32631CC191176B30063039B /* tw.png */,
 				B3FF1A8A190EE23F007D0903 /* userpin.png */,
@@ -309,6 +339,8 @@
 				B364F1F3190C2FA6004B82B3 /* QuestCell.m */,
 				B364F1F8190C30F4004B82B3 /* QuestViewController.h */,
 				B364F1F9190C30F4004B82B3 /* QuestViewController.m */,
+				B3A097C719137E870082185C /* NoDataCell.h */,
+				B3A097C819137E870082185C /* NoDataCell.m */,
 			);
 			path = Quests;
 			sourceTree = "<group>";
@@ -325,7 +357,8 @@
 		B364F1DD190C2A06004B82B3 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
-				B364F1E6190C2EF1004B82B3 /* SVProgressHUD */,
+				B3A72B44191381FA0096300A /* PullToRefesh */,
+				B3A72B3E191381EA0096300A /* SVProgressHUD */,
 			);
 			path = 3rdParty;
 			sourceTree = "<group>";
@@ -372,14 +405,23 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
-		B364F1E6190C2EF1004B82B3 /* SVProgressHUD */ = {
+		B3A72B3E191381EA0096300A /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				B364F1E7190C2EF1004B82B3 /* SVProgressHUD.bundle */,
-				B364F1E8190C2EF1004B82B3 /* SVProgressHUD.h */,
-				B364F1E9190C2EF1004B82B3 /* SVProgressHUD.m */,
+				B3A72B3F191381EA0096300A /* SVProgressHUD.bundle */,
+				B3A72B40191381EA0096300A /* SVProgressHUD.h */,
+				B3A72B41191381EA0096300A /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		B3A72B44191381FA0096300A /* PullToRefesh */ = {
+			isa = PBXGroup;
+			children = (
+				B3A72B45191381FA0096300A /* EGORefreshTableHeaderView.h */,
+				B3A72B46191381FA0096300A /* EGORefreshTableHeaderView.m */,
+			);
+			path = PullToRefesh;
 			sourceTree = "<group>";
 		};
 		B3FF1A86190EC423007D0903 /* Setting */ = {
@@ -468,14 +510,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32631CE191176B30063039B /* tw.png in Resources */,
-				B364F1EA190C2EF1004B82B3 /* SVProgressHUD.bundle in Resources */,
+				B3A72B541913824F0096300A /* blackArrow.png in Resources */,
+				B3A72B551913824F0096300A /* blackArrow@2x.png in Resources */,
 				B364F1B7190C1E49004B82B3 /* Main_iPad.storyboard in Resources */,
 				B364F1BC190C1E49004B82B3 /* Images.xcassets in Resources */,
 				B364F1B4190C1E49004B82B3 /* Main_iPhone.storyboard in Resources */,
 				B3FF1A8C190EE23F007D0903 /* userpin.png in Resources */,
+				B3A72B42191381EA0096300A /* SVProgressHUD.bundle in Resources */,
 				B32631CD191176B30063039B /* fb.png in Resources */,
 				B3FF1A8D190EE23F007D0903 /* locationpin.png in Resources */,
+				B3A72B571913824F0096300A /* blueArrow@2x.png in Resources */,
+				B3A72B591913824F0096300A /* grayArrow@2x.png in Resources */,
+				B3A72B561913824F0096300A /* blueArrow.png in Resources */,
+				B3A72B5A1913824F0096300A /* whiteArrow.png in Resources */,
+				B3A72B581913824F0096300A /* grayArrow.png in Resources */,
 				B364F1AB190C1E49004B82B3 /* InfoPlist.strings in Resources */,
+				B3A72B5B1913824F0096300A /* whiteArrow@2x.png in Resources */,
 				B3F83718190D184B00CF8852 /* Quests.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,8 +550,9 @@
 				B3F83724190D255400CF8852 /* UserHandler.m in Sources */,
 				B3F83730190D4ABF00CF8852 /* AnnotationMaker.m in Sources */,
 				B3F83716190CB6C400CF8852 /* NavViewController.m in Sources */,
-				B364F1EB190C2EF1004B82B3 /* SVProgressHUD.m in Sources */,
+				B3A72B43191381EA0096300A /* SVProgressHUD.m in Sources */,
 				B32631C8191167420063039B /* SignUpViewController.m in Sources */,
+				B3A72B4A191381FA0096300A /* EGORefreshTableHeaderView.m in Sources */,
 				B364F1F4190C2FA6004B82B3 /* QuestCell.m in Sources */,
 				B364F1FA190C30F4004B82B3 /* QuestViewController.m in Sources */,
 				B364F1AD190C1E49004B82B3 /* main.m in Sources */,
@@ -509,6 +560,7 @@
 				B364F1E5190C2AA3004B82B3 /* CommonMethods.m in Sources */,
 				B364F1EE190C2F36004B82B3 /* LoginViewController.m in Sources */,
 				B364F1FD190C3812004B82B3 /* DetailsViewController.m in Sources */,
+				B3A097C919137E870082185C /* NoDataCell.m in Sources */,
 				B3FF1A89190EC423007D0903 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

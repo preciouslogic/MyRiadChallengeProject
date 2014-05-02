@@ -94,8 +94,8 @@
                         <outlet property="switchRememberUsername" destination="CwE-om-G8y" id="6g0-eM-0EX"/>
                         <outlet property="txtFieldPassword" destination="zzf-9e-jtV" id="Bow-oH-qWZ"/>
                         <outlet property="txtFieldUsername" destination="zVL-GR-jaX" id="oed-ua-KGs"/>
-                        <segue destination="M5i-WU-LMl" kind="push" identifier="QuestViewController" id="LuA-me-e9H"/>
                         <segue destination="NXr-7X-EqD" kind="push" identifier="SignUpViewController" id="wlh-ng-3Mx"/>
+                        <segue destination="IDS-zI-2Nc" kind="push" identifier="QuestViewController" id="p0D-KB-rWa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -139,7 +139,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="JkU-eE-gnJ">
-                                <rect key="frame" x="25" y="210" width="275" height="340"/>
+                                <rect key="frame" x="25" y="210.00000038486093" width="275" height="340"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -187,58 +187,98 @@
             <point key="canvasLocation" x="2878" y="-448"/>
         </scene>
         <!--Quest View Controller - Quests-->
-        <scene sceneID="EEv-Z8-7Fl">
+        <scene sceneID="BhN-TK-sta">
             <objects>
-                <tableViewController id="M5i-WU-LMl" customClass="QuestViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="RLl-4P-9Jl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" rowHeight="92" id="kHU-0N-nDj" customClass="QuestCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="92"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kHU-0N-nDj" id="gdo-V0-KkF">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="91"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quest Name Goes Here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="poY-On-WLy">
-                                            <rect key="frame" x="5" y="5" width="284" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By:Billy Joe Bob" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njd-R2-own">
-                                            <rect key="frame" x="5" y="34" width="284" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards: 10000 Gold 10000 XP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9km-EU-Pkh">
-                                            <rect key="frame" x="5" y="62" width="284" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
+                <viewController id="IDS-zI-2Nc" customClass="QuestViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Ff-cm-r0l">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1rZ-od-Cmt">
+                                <rect key="frame" x="0.0" y="65" width="320" height="439"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" rowHeight="92" id="Kkv-6N-vkh" customClass="QuestCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kkv-6N-vkh" id="fn0-8f-i5Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quest Name Goes Here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="apg-bR-wTa">
+                                                    <rect key="frame" x="5" y="5" width="287" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By:Billy Joe Bob" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2r-Co-EOf">
+                                                    <rect key="frame" x="5" y="34" width="287" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards: 10000 Gold 10000 XP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jGL-XH-P1T">
+                                                    <rect key="frame" x="5" y="62" width="287" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblPostedBy" destination="w2r-Co-EOf" id="ygR-0F-zA6"/>
+                                            <outlet property="lblQuestHeading" destination="apg-bR-wTa" id="tRV-Vv-gWK"/>
+                                            <outlet property="lblRewards" destination="jGL-XH-P1T" id="etS-Cx-bH5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotDataCell" rowHeight="50" id="xcz-hp-WaD" customClass="NoDataCell">
+                                        <rect key="frame" x="0.0" y="114" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xcz-hp-WaD" id="yQY-Q3-S7v">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Quest Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y9V-wU-0iH">
+                                                    <rect key="frame" x="0.0" y="6" width="320" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblMsg" destination="y9V-wU-0iH" id="EhL-aO-iMv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="lblPostedBy" destination="njd-R2-own" id="pzR-ll-pXZ"/>
-                                    <outlet property="lblQuestHeading" destination="poY-On-WLy" id="bBO-he-fv4"/>
-                                    <outlet property="lblRewards" destination="9km-EU-Pkh" id="0z2-2O-J81"/>
+                                    <outlet property="dataSource" destination="IDS-zI-2Nc" id="uuG-Gl-2oc"/>
+                                    <outlet property="delegate" destination="IDS-zI-2Nc" id="e0l-ZK-xTK"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="M5i-WU-LMl" id="Jga-U9-6WS"/>
-                            <outlet property="delegate" destination="M5i-WU-LMl" id="rVM-lT-q0J"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Quests" id="Xtc-9v-xfR">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="vHB-z4-zwV">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3rG-k6-3yd">
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="iMu-3c-ZSs">
+                                <rect key="frame" x="25" y="20" width="270" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Available"/>
+                                    <segment title="Accepted"/>
+                                    <segment title="Complete"/>
+                                </segments>
+                                <connections>
+                                    <action selector="filterAction:" destination="IDS-zI-2Nc" eventType="valueChanged" id="49C-bl-d8O"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Quests" id="Mn6-Xr-bUM">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="AEK-7X-XWc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zfu-cy-TmJ">
                                 <rect key="frame" x="16" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -246,12 +286,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutAction:" destination="M5i-WU-LMl" eventType="touchUpInside" id="ZP0-ve-PbI"/>
+                                    <action selector="logoutAction:" destination="IDS-zI-2Nc" eventType="touchUpInside" id="ZEa-rn-VSe"/>
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="WUv-R5-qFS">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RY6-1V-anq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fqK-wu-WhK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OIa-tT-M3g">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -259,21 +299,41 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="settingAction:" destination="M5i-WU-LMl" eventType="touchUpInside" id="YPg-n0-MPu"/>
+                                    <action selector="settingAction:" destination="IDS-zI-2Nc" eventType="touchUpInside" id="8cp-qn-ULz"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnLogout" destination="3rG-k6-3yd" id="QiF-zb-wq4"/>
-                        <outlet property="btnSetting" destination="RY6-1V-anq" id="fkZ-BH-FhU"/>
-                        <segue destination="OAi-Li-d7D" kind="push" identifier="DetailViewController" id="KRf-lS-txq"/>
-                        <segue destination="80F-zi-rUg" kind="modal" identifier="SettingViewController" id="NNF-7E-Gf6"/>
+                        <outlet property="btnLogout" destination="zfu-cy-TmJ" id="vfV-eo-UXN"/>
+                        <outlet property="btnSetting" destination="OIa-tT-M3g" id="M1j-K3-Xhy"/>
+                        <outlet property="segmentFilters" destination="iMu-3c-ZSs" id="sE9-MF-fXp"/>
+                        <outlet property="tblViewQuestData" destination="1rZ-od-Cmt" id="Yvu-xO-Oqj"/>
+                        <segue destination="80F-zi-rUg" kind="modal" identifier="SettingViewController" id="34T-wX-OnE"/>
+                        <segue destination="OAi-Li-d7D" kind="push" identifier="DetailViewController" id="bcW-3u-AQo"/>
                     </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xuB-om-rYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2208" y="605"/>
+        </scene>
+        <!--Quest View Controller-->
+        <scene sceneID="EEv-Z8-7Fl">
+            <objects>
+                <tableViewController id="M5i-WU-LMl" customClass="QuestViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="RLl-4P-9Jl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="M5i-WU-LMl" id="Jga-U9-6WS"/>
+                            <outlet property="delegate" destination="M5i-WU-LMl" id="rVM-lT-q0J"/>
+                        </connections>
+                    </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hx2-UJ-UcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2165" y="387"/>
+            <point key="canvasLocation" x="1237" y="783"/>
         </scene>
         <!--Details View Controller - Details-->
         <scene sceneID="iZd-eP-zBG">
@@ -331,8 +391,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="J30-34-5CH"/>
+                    <navigationItem key="navigationItem" title="Details" id="J30-34-5CH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="TCE-7W-ghz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lnb-l1-nbK">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Accept"/>
+                                <connections>
+                                    <action selector="acceptedAction:" destination="OAi-Li-d7D" eventType="touchUpInside" id="Jup-IS-F98"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="btnAccepted" destination="lnb-l1-nbK" id="AUg-Wl-nAp"/>
                         <outlet property="lblPosted" destination="3dZ-Do-4c7" id="nAK-Uc-8lP"/>
                         <outlet property="mapLocation" destination="Oc8-Ei-G9K" id="hUH-po-CDm"/>
                         <outlet property="segmentMapType" destination="lja-c1-uvf" id="BkL-Cn-KcJ"/>
@@ -444,7 +516,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="M5i-WU-LMl" kind="relationship" relationship="rootViewController" id="rSS-y6-3u7"/>
+                        <segue destination="IDS-zI-2Nc" kind="relationship" relationship="rootViewController" id="Op9-0u-bG0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olc-XY-etJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,6 +552,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rSS-y6-3u7"/>
+        <segue reference="p0D-KB-rWa"/>
     </inferredMetricsTieBreakers>
 </document>

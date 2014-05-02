@@ -12,13 +12,15 @@
 @class SettingViewController;
 @protocol SettingViewControllerDelegates <NSObject>
 
--(void)settingViewControllerDone:(NSString*)selectedType;
+-(void)settingViewControllerDone:(int)selectedType;
 
 @end
 
 @interface SettingViewController : UIViewController<CLLocationManagerDelegate,UITextFieldDelegate>
 {
     CLLocationManager *locationManager;
+    float latitude;
+    float longitude;
 }
 
 

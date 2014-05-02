@@ -9,21 +9,32 @@
 #import <UIKit/UIKit.h>
 #import "QuestHandler.h"
 #import "SettingViewController.h"
+#import "EGORefreshTableHeaderView.h"
 
 
-
-@interface QuestViewController : UITableViewController<QuestHandlerDelegate,SettingViewControllerDelegates>
+@interface QuestViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,QuestHandlerDelegate,SettingViewControllerDelegates,EGORefreshTableHeaderDelegate>
 {
     QuestHandler *objQuestHandler;
     NSMutableArray *objQuestList;
     int selectedRow;
-    NSString *currentAlignment;
+    int currentAlignment;
+    int selectedFilterType;
+    NSMutableArray *filterData;
+    BOOL dataLoadingDone;
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
+    CGPoint point;
+    BOOL dataLoading;
+    int pageNo;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnLogout;
 @property (weak, nonatomic) IBOutlet UIButton *btnSetting;
 @property (assign,nonatomic)BOOL isSignUpCall;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentFilters;
+@property (weak, nonatomic) IBOutlet UITableView *tblViewQuestData;
 
 - (IBAction)settingAction:(id)sender;
 - (IBAction)logoutAction:(id)sender;
+- (IBAction)filterAction:(id)sender;
 
 @end

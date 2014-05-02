@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Parse/Parse.h>
 @interface Quest : NSObject
 
+
+@property (nonatomic,strong)NSString *questID;
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSString *Details;
-@property (nonatomic,strong)NSString *owner;
-@property (nonatomic,assign)float ownerLatitude;
-@property (nonatomic,assign)float ownerLongitude;
-@property (nonatomic,assign)float latitude;
-@property (nonatomic,assign)float longitude;
-@property (nonatomic,strong)NSString *alignment;
+@property (nonatomic,strong)PFGeoPoint *location;
+@property (nonatomic,assign)int alignment;
 @property (nonatomic,assign)int goldRewards;
 @property (nonatomic,assign)int xpRewards;
-
+@property (nonatomic,assign)BOOL isAccepted;
+@property (nonatomic,assign)BOOL isCompleted;
+@property (nonatomic,strong)NSURL *imageURL;
+@property (nonatomic,strong)PFUser *objOwner;
 @end

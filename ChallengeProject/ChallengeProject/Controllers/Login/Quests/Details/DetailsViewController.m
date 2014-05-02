@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "CommonMethods.h"
 #import "AnnotationMaker.h"
+#import <Parse/Parse.h>
 @interface DetailsViewController ()
 
 @end
@@ -28,30 +29,34 @@
 {
     [super viewDidLoad];
     self.txtFieldHeading.text = self.objQuest.title;
-    self.lblPosted.text = [NSString stringWithFormat:@"Posted By: %@",self.objQuest.owner];
+    self.lblPosted.text = [NSString stringWithFormat:@"Posted By: %@",[self.objQuest.objOwner objectForKey:@"name"]];
     self.txtFieldDetails.text  = self.objQuest.Details;
+    objQuestHandler = [[QuestHandler alloc] init];
+    objQuestHandler.delegate = self;
     
-//    [self.txtFieldHeading sizeToFit];
-//    CGRect lblPostedFrame = self.lblPosted.frame;
-//    lblPostedFrame.origin.y = self.txtFieldHeading.frame.origin.y+self.txtFieldHeading.frame.size.height+5;
-//    self.lblPosted.frame = lblPostedFrame;
-//    
-//    CGRect txtFieldDetailFrame = self.txtFieldDetails.frame;
-//    txtFieldDetailFrame.origin.y = self.lblPosted.frame.origin.y+self.lblPosted.frame.size.height+5;
-//   
-//    txtFieldDetailFrame.size.height = (CurrentDeviceBound.size.height-txtFieldDetailFrame.origin.y-15);
-//    self.txtFieldDetails.frame = txtFieldDetailFrame;
-    
-    AnnotationMaker *Annotation1=[[AnnotationMaker alloc] initWithTitle:@"Quest Location" withSubTitle:@"Having fun...!" andCoordinate:CLLocationCoordinate2DMake(self.objQuest.latitude, self.objQuest.longitude)];
+    AnnotationMaker *Annotation1=[[AnnotationMaker alloc] initWithTitle:@"Quest Location" withSubTitle:@"Having fun...!" andCoordinate:CLLocationCoordinate2DMake(self.objQuest.location.latitude, self.objQuest.location.longitude)];
     Annotation1.type = 0;
     
     [self.mapLocation addAnnotation:Annotation1];
     
-    AnnotationMaker *Annotation2=[[AnnotationMaker alloc] initWithTitle:@"My Location" withSubTitle:@"Having fun...!" andCoordinate:CLLocationCoordinate2DMake(self.objQuest.ownerLatitude, self.objQuest.ownerLongitude)];
+    PFGeoPoint *objOwnerPoints = [self.objQuest.objOwner objectForKey:@"location"];
+    
+    AnnotationMaker *Annotation2=[[AnnotationMaker alloc] initWithTitle:@"My Location" withSubTitle:@"Having fun...!" andCoordinate:CLLocationCoordinate2DMake(objOwnerPoints.latitude, objOwnerPoints.longitude)];
     Annotation1.type = 1;
     
     [self.mapLocation addAnnotation:Annotation2];
     [self zoomMapViewToFitAnnotations:self.mapLocation animated:YES];
+    if(self.objQuest.isAccepted)
+    {
+        [self.btnAccepted setTitle:@"Complete" forState:UIControlStateNormal];
+        [self.btnAccepted setTitle:@"Complete" forState:UIControlStateHighlighted];
+    }
+    if(self.objQuest.isCompleted)
+    {
+        self.objQuest.isCompleted = YES;
+        self.btnAccepted.hidden = YES;
+        self.btnAccepted.enabled = NO;
+    }
 	// Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -68,6 +73,18 @@
   
     self.mapLocation.mapType = self.segmentMapType.selectedSegmentIndex;
     
+}
+
+- (IBAction)acceptedAction:(id)sender
+{
+    if(!self.objQuest.isAccepted)
+    {
+        [objQuestHandler QuestAcceptCall:self.objQuest];
+    }
+    else
+    {
+        [objQuestHandler QuestCompleteCall:self.objQuest];
+    }
 }
 -(void)setViewAccordingToOrientations
 {
@@ -97,6 +114,26 @@
     
     return YES;
 }
+#pragma mark QuestHandlerDelegates
+-(void)questAcceptedDone:(BOOL)status
+{
+    if(status)
+    {
+        [self.btnAccepted setTitle:@"Complete" forState:UIControlStateNormal];
+        [self.btnAccepted setTitle:@"Complete" forState:UIControlStateHighlighted];
+        self.objQuest.isAccepted = YES;
+    }
+}
+-(void)questCompleteDone:(BOOL)status
+{
+    if(status)
+    {
+        self.objQuest.isCompleted = YES;
+        self.btnAccepted.hidden = YES;
+        self.btnAccepted.enabled = NO;
+    }
+}
+
 #pragma mark MapDelegatesAndFunctions
 
 - (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView1 animated:(BOOL)animated

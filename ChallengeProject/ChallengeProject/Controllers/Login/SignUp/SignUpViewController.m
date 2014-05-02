@@ -66,6 +66,7 @@
     {
         [SVProgressHUD showErrorWithStatus:@"Name field can't be empty"];
     }
+    
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

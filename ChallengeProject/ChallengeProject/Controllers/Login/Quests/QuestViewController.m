@@ -10,6 +10,7 @@
 #import "QuestCell.h"
 #import "SVProgressHUD.h"
 #import "DetailsViewController.h"
+#import "NoDataCell.h"
 
 @interface QuestViewController ()
 
@@ -17,31 +18,37 @@
 
 @implementation QuestViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    currentAlignment = @"neutral";
+    pageNo = 0;
+    currentAlignment = [[[PFUser currentUser] objectForKey:@"alignment"] intValue];
+   // NSLog(@"%@",[[PFUser currentUser] objectForKey:@"name"]);
     objQuestList = [[NSMutableArray alloc] init];
+    filterData = [[NSMutableArray alloc] init];
     objQuestHandler = [[QuestHandler alloc] init];
     objQuestHandler.delegate = self;
-    [objQuestHandler loadAllQuests:currentAlignment];
+    [objQuestHandler loadAllQuests:pageNo alignmentType:currentAlignment];
    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (_refreshHeaderView == nil)
+    {
+		
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tblViewQuestData.bounds.size.height, self.view.frame.size.width, self.tblViewQuestData.bounds.size.height) arrowImageName:@"grayArrow.png" textColor:[UIColor grayColor]];
+        view.delegate = self;
+        view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.85];
+		[self.tblViewQuestData addSubview:view];
+		_refreshHeaderView = view;
+		
+		
+	}
+	[_refreshHeaderView refreshLastUpdatedDate];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+     [self onFilterChange];
+     [self setViewAccordingToOrientations];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -52,7 +59,7 @@
     if([segue.identifier isEqualToString:@"DetailViewController"])
     {
         DetailsViewController *objDetailViewController = segue.destinationViewController;
-        objDetailViewController.objQuest = [objQuestList objectAtIndex:selectedRow];
+        objDetailViewController.objQuest = [filterData objectAtIndex:selectedRow];
     }
     else if([segue.identifier isEqualToString:@"SettingViewController"])
     {
@@ -78,25 +85,63 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return objQuestList.count;
+    if(dataLoadingDone)
+    {
+        return filterData.count+1;
+    }
+    else
+    {
+        return 0;
+    }
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"QuestCell";
-    QuestCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    Quest *objQuest = [objQuestList objectAtIndex:indexPath.row];
-    cell.lblQuestHeading.text = objQuest.title;
-    cell.lblPostedBy.text = [NSString stringWithFormat:@"Posted By: %@",objQuest.owner];
-    cell.lblRewards.text = [NSString stringWithFormat:@"Rewards: %d Gold %d XP",objQuest.goldRewards,objQuest.xpRewards];
-    // Configure the cell...
+    if(indexPath.row< filterData.count)
+    {
+        static NSString *CellIdentifier = @"QuestCell";
+        QuestCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        Quest *objQuest = [filterData objectAtIndex:indexPath.row];
+        cell.lblQuestHeading.text = objQuest.title;
+        cell.lblPostedBy.text = [NSString stringWithFormat:@"Posted By: %@",[objQuest.objOwner objectForKey:@"name"]];
+        cell.lblRewards.text = [NSString stringWithFormat:@"Rewards: %d Gold %d XP",objQuest.goldRewards,objQuest.xpRewards];
+        // Configure the cell...
     
-    return cell;
+        return cell;
+    }
+    else
+    {
+        NoDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotDataCell" forIndexPath:indexPath];
+        if(filterData.count<=0)
+        {
+            cell.lblMsg.text = [NSString stringWithFormat:@"No Quests Available"];
+        }
+        else
+        {
+            cell.lblMsg.text = [NSString stringWithFormat:@"No More Quests"];
+        }
+        
+        return cell;
+    }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"DetailViewController" sender:tableView];
+}
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row< filterData.count)
+    {
+        return 92;
+    }
+    else
+    {
+        return 50;
+    }
+    
 }
 - (IBAction)logoutAction:(id)sender
 {
@@ -110,6 +155,57 @@
     }
     
 }
+
+- (IBAction)filterAction:(id)sender
+{
+    [self onFilterChange];
+}
+-(void)setViewAccordingToOrientations
+{
+    UIInterfaceOrientation orientation = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
+    
+    [self.view endEditing:YES];
+    if (orientation==UIInterfaceOrientationPortrait)
+    {
+        self.segmentFilters.frame = CGRectMake(25, 20, 270, 29);
+        self.tblViewQuestData.frame = CGRectMake(0, 65, 320, 439);
+        
+    }
+    else if (orientation==UIInterfaceOrientationLandscapeLeft || orientation==UIInterfaceOrientationLandscapeRight)
+    {
+        self.segmentFilters.frame = CGRectMake(144, 14, 270, 29);
+        self.tblViewQuestData.frame = CGRectMake(0, 56, 568, 200);
+        
+    }
+}
+- (BOOL)shouldAutorotate {
+    
+    [self setViewAccordingToOrientations];
+    
+    return YES;
+}
+-(void)onFilterChange
+{
+    [filterData removeAllObjects];
+    
+    for (Quest *objQuest in objQuestList)
+    {
+        if(self.segmentFilters.selectedSegmentIndex == 0 && !objQuest.isAccepted)
+        {
+            [filterData addObject:objQuest];
+        }
+        else if(self.segmentFilters.selectedSegmentIndex == 1 && objQuest.isAccepted && !objQuest.isCompleted)
+        {
+            [filterData addObject:objQuest];
+        }
+        else if(self.segmentFilters.selectedSegmentIndex == 2 && objQuest.isCompleted)
+        {
+            [filterData addObject:objQuest];
+        }
+    }
+    
+    [self.tblViewQuestData reloadData];
+}
 #pragma mark QuestHandlerDelegates
 -(void)questLodingDone:(id)data Status:(BOOL)status
 {
@@ -117,7 +213,21 @@
     {
         
         objQuestList = data;
-        [self.tableView reloadData];
+        dataLoadingDone = YES;
+        [self doneLoadingTableViewData];
+        if(objQuestList.count < 20)
+        {
+            dataLoading = YES;
+        }
+        else
+        {
+            dataLoading = NO;
+        }
+        if(objQuestList.count<=0)
+        {
+            [SVProgressHUD showSuccessWithStatus:@"No Quests found"];
+        }
+        [self onFilterChange];
     }
     else
     {
@@ -125,9 +235,78 @@
     }
 }
 #pragma  mark SettingViewDelegates
--(void)settingViewControllerDone:(NSString *)selectedType
+-(void)settingViewControllerDone:(int)selectedType
 {
     currentAlignment = selectedType;
-     [objQuestHandler loadAllQuests:currentAlignment];
+    [objQuestHandler loadAllQuests:pageNo alignmentType:currentAlignment];
+}
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+    if(scrollView.contentOffset.y > point.y)
+    {
+        float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        //NSLog(@"bottom:%f scrollHeight:%f floor:%f",bottomEdge,scrollView.contentSize.height,floor(scrollView.contentSize.height));
+        float LoadedHeight = floor(scrollView.contentSize.height)-200;
+        // NSLog(@"loaded:%f total:%f",LoadedHeight,floor(scrollView.contentSize.height));
+        if (bottomEdge >=  LoadedHeight )
+        {
+            if(!dataLoading)
+            {
+                NSLog(@"called");
+                dataLoading = YES;
+                pageNo +=1;
+                [objQuestHandler loadAllQuests:pageNo alignmentType:currentAlignment];
+            }
+        }
+        
+        
+    }
+    
+    
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    point = scrollView.contentOffset;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+	
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	_reloading = YES;
+    pageNo = 0;
+    [objQuestHandler loadAllQuests:pageNo alignmentType:currentAlignment];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
+- (void)doneLoadingTableViewData
+{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tblViewQuestData];
+	
 }
 @end
